@@ -2,6 +2,7 @@ baseURL = 'https://github.com/TuanCuong2208/my-portfolio' # Thay bằng link Git
 languageCode = 'vi'
 title = 'Nguyễn Tuấn Cường - Portfolio'
 theme = [] # Không dùng theme có sẵn, tự code layout
+publishDir = "docs"
 
 [params]
   description = "Chuyên gia Lập trình Mạng & Java"
@@ -30,4 +31,3 @@ theme = [] # Không dùng theme có sẵn, tự code layout
   name = "Blog"
   url = "#blog"
   weight = 4
-  publishDir = "docs"
