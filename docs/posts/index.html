@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posts</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+         
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #2563eb; }
+        
+         
+        #lightbox-modal { transition: opacity 0.3s ease, visibility 0.3s ease; }
+        #lightbox-modal.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+        #lightbox-modal:not(.hidden) { opacity: 1; visibility: visible; pointer-events: auto; }
+    </style>
+</head>
+<body class="bg-white text-slate-800 font-sans leading-relaxed relative">
+
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-sm z-50 border-b border-slate-100">
+        <div class="container mx-auto px-6 py-4 relative flex items-center justify-center">
+            <a href="https://tuancuong2208.github.io/my-portfolio/" class="text-2xl font-bold text-blue-600 tracking-tighter absolute left-6 md:left-0">NTC<span class="text-slate-400">.Dev</span></a>
+            
+            <ul class="hidden md:flex space-x-10 font-medium text-[15px]">
+                
+                <li>
+                    <a href="/my-portfolio/#home" class="text-slate-600 hover:text-blue-600 transition-colors py-2 relative group">
+                        Trang Chủ
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="/my-portfolio/#about" class="text-slate-600 hover:text-blue-600 transition-colors py-2 relative group">
+                        Về Tôi
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="/my-portfolio/#certificates" class="text-slate-600 hover:text-blue-600 transition-colors py-2 relative group">
+                        Chứng Chỉ
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="/my-portfolio/#blog" class="text-slate-600 hover:text-blue-600 transition-colors py-2 relative group">
+                        Blog
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        
+<section class="pt-32 pb-20 bg-slate-50 min-h-screen">
+    <div class="container mx-auto px-6 max-w-5xl">
+        <div class="text-center mb-16">
+            <h1 class="text-4xl font-bold text-slate-900 mb-4">Tất cả bài viết</h1>
+            <p class="text-slate-500">Kho tàng kiến thức của Nguyễn Tuấn Cường</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <article class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition border border-slate-100 flex flex-col">
+                <div class="text-xs font-bold text-blue-600 mb-2 uppercase tracking-wider">
+                    Blog
+                </div>
+                <h2 class="text-xl font-bold text-slate-800 mb-3">
+                    <a href="https://tuancuong2208.github.io/my-portfolio/posts/java-socket-programming/" class="hover:text-blue-600">Lập trình Socket với Java: Xây dựng ứng dụng Client-Server cơ bản</a>
+                </h2>
+                <p class="text-slate-500 text-sm line-clamp-3 mb-4 flex-grow">
+                    Giới thiệu Socket programming là nền tảng của lập trình mạng, cho phép các ứng dụng giao tiếp với nhau qua mạng. Trong bài viết này, chúng ta sẽ tìm hiểu cách xây dựng một ứng dụng client-server đơn giản bằng Java.
+Socket là gì? Socket là một điểm cuối (endpoint) trong giao tiếp hai chiều giữa hai chương trình chạy trên mạng. Java cung cấp package java.net với các class như Socket và ServerSocket để làm việc với socket.
+
+                </p>
+                <div class="pt-4 border-t border-slate-50 text-xs text-slate-400 flex justify-between">
+                    <span>15/12/2024</span>
+                    <a href="https://tuancuong2208.github.io/my-portfolio/posts/java-socket-programming/" class="text-blue-600 font-bold hover:underline">Đọc ngay →</a>
+                </div>
+            </article>
+            
+            <article class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition border border-slate-100 flex flex-col">
+                <div class="text-xs font-bold text-blue-600 mb-2 uppercase tracking-wider">
+                    Blog
+                </div>
+                <h2 class="text-xl font-bold text-slate-800 mb-3">
+                    <a href="https://tuancuong2208.github.io/my-portfolio/posts/java-http-client/" class="hover:text-blue-600">HTTP Client trong Java: Sử dụng HttpURLConnection và HttpClient API</a>
+                </h2>
+                <p class="text-slate-500 text-sm line-clamp-3 mb-4 flex-grow">
+                    Giới thiệu về HTTP trong Java HTTP (HyperText Transfer Protocol) là giao thức nền tảng của web. Java cung cấp nhiều cách để thực hiện HTTP request, từ cách truyền thống với HttpURLConnection đến API hiện đại HttpClient (Java 11+).
+Cách 1: Sử dụng HttpURLConnection import java.io.*; import java.net.*; public class HttpURLConnectionExample { public static void main(String[] args) throws IOException { URL url = new URL(&#34;https://api.github.com/users/github&#34;); HttpURLConnection conn = (HttpURLConnection) url.openConnection(); conn.setRequestMethod(&#34;GET&#34;); conn.setRequestProperty(&#34;User-Agent&#34;, &#34;Java Client&#34;); int responseCode = conn.getResponseCode(); System.out.println(&#34;Response Code: &#34; + responseCode); BufferedReader in = new BufferedReader( new InputStreamReader(conn.getInputStream()) ); String inputLine; StringBuilder response = new StringBuilder(); while ((inputLine = in.readLine()) != null) { response.append(inputLine); } in.close(); System.out.println(response.toString()); } } Cách 2: HttpClient API (Java 11+) import java.net.URI; import java.net.http.*; import java.net.http.HttpResponse.BodyHandlers; public class HttpClientExample { public static void main(String[] args) throws Exception { HttpClient client = HttpClient.newHttpClient(); HttpRequest request = HttpRequest.newBuilder() .uri(URI.create(&#34;https://api.github.com/users/github&#34;)) .header(&#34;User-Agent&#34;, &#34;Java Client&#34;) .GET() .build(); HttpResponse response = client.send( request, BodyHandlers.ofString() ); System.out.println(&#34;Status Code: &#34; + response.statusCode()); System.out.println(&#34;Response Body: &#34; + response.body()); } } So sánh hai phương pháp Tiêu chí HttpURLConnection HttpClient Từ phiên bản Java 1.1 Java 11 Cú pháp Phức tạp Đơn giản, fluent Async support Không Có HTTP/2 Không Có Kết luận Nếu bạn đang dùng Java 11 trở lên, nên sử dụng HttpClient API vì nó hiện đại, dễ dùng và hỗ trợ tốt hơn các tính năng mới của HTTP.
+
+                </p>
+                <div class="pt-4 border-t border-slate-50 text-xs text-slate-400 flex justify-between">
+                    <span>14/12/2024</span>
+                    <a href="https://tuancuong2208.github.io/my-portfolio/posts/java-http-client/" class="text-blue-600 font-bold hover:underline">Đọc ngay →</a>
+                </div>
+            </article>
+            
+            <article class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition border border-slate-100 flex flex-col">
+                <div class="text-xs font-bold text-blue-600 mb-2 uppercase tracking-wider">
+                    Blog
+                </div>
+                <h2 class="text-xl font-bold text-slate-800 mb-3">
+                    <a href="https://tuancuong2208.github.io/my-portfolio/posts/java-websocket/" class="hover:text-blue-600">WebSocket Server với Java: Giao tiếp thời gian thực</a>
+                </h2>
+                <p class="text-slate-500 text-sm line-clamp-3 mb-4 flex-grow">
+                    WebSocket là gì? WebSocket là giao thức cung cấp kênh giao tiếp song công (full-duplex) qua một kết nối TCP duy nhất. Khác với HTTP truyền thống (request-response), WebSocket cho phép server chủ động gửi dữ liệu đến client.
+Ứng dụng của WebSocket Chat applications Real-time notifications Live sports scores Collaborative editing Online gaming Xây dựng WebSocket Server với Java EE import javax.websocket.*; import javax.websocket.server.ServerEndpoint; import java.io.IOException; import java.util.Set; import java.util.concurrent.CopyOnWriteArraySet; @ServerEndpoint(&#34;/chat&#34;) public class ChatServer { private static Set clients = new CopyOnWriteArraySet&lt;&gt;(); @OnOpen public void onOpen(Session session) { clients.add(session); System.out.println(&#34;Kết nối mới: &#34; + session.getId()); } @OnMessage public void onMessage(String message, Session session) { System.out.println(&#34;Nhận tin nhắn: &#34; + message); // Broadcast đến tất cả clients for (Session client : clients) { try { client.getBasicRemote().sendText(message); } catch (IOException e) { e.printStackTrace(); } } } @OnClose public void onClose(Session session) { clients.remove(session); System.out.println(&#34;Ngắt kết nối: &#34; + session.getId()); } @OnError public void onError(Session session, Throwable throwable) { System.err.println(&#34;Lỗi: &#34; + throwable.getMessage()); } } WebSocket với Spring Boot import org.springframework.web.socket.TextMessage; import org.springframework.web.socket.WebSocketSession; import org.springframework.web.socket.handler.TextWebSocketHandler; public class ChatWebSocketHandler extends TextWebSocketHandler { @Override protected void handleTextMessage( WebSocketSession session, TextMessage message ) throws Exception { String payload = message.getPayload(); System.out.println(&#34;Nhận: &#34; + payload); session.sendMessage(new TextMessage(&#34;Echo: &#34; + payload)); } } Cấu hình WebSocket trong Spring Boot import org.springframework.context.annotation.Configuration; import org.springframework.web.socket.config.annotation.*; @Configuration @EnableWebSocket public class WebSocketConfig implements WebSocketConfigurer { @Override public void registerWebSocketHandlers( WebSocketHandlerRegistry registry ) { registry.addHandler(new ChatWebSocketHandler(), &#34;/chat&#34;) .setAllowedOrigins(&#34;*&#34;); } } Kết luận WebSocket là công nghệ quan trọng cho các ứng dụng real-time. Java cung cấp nhiều cách để implement WebSocket, từ Java EE chuẩn đến Spring Framework.
+
+                </p>
+                <div class="pt-4 border-t border-slate-50 text-xs text-slate-400 flex justify-between">
+                    <span>13/12/2024</span>
+                    <a href="https://tuancuong2208.github.io/my-portfolio/posts/java-websocket/" class="text-blue-600 font-bold hover:underline">Đọc ngay →</a>
+                </div>
+            </article>
+            
+            <article class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition border border-slate-100 flex flex-col">
+                <div class="text-xs font-bold text-blue-600 mb-2 uppercase tracking-wider">
+                    Blog
+                </div>
+                <h2 class="text-xl font-bold text-slate-800 mb-3">
+                    <a href="https://tuancuong2208.github.io/my-portfolio/posts/java-rest-api/" class="hover:text-blue-600">Xây dựng RESTful API với Java Spring Boot và Networking</a>
+                </h2>
+                <p class="text-slate-500 text-sm line-clamp-3 mb-4 flex-grow">
+                    REST API là gì? REST (Representational State Transfer) là một kiến trúc phần mềm cho việc xây dựng web services. RESTful API sử dụng HTTP methods (GET, POST, PUT, DELETE) để thực hiện các thao tác CRUD.
+Các nguyên tắc của REST Stateless: Mỗi request độc lập, không lưu trạng thái Client-Server: Tách biệt giao diện người dùng và lưu trữ dữ liệu Cacheable: Response có thể được cache Uniform Interface: Giao diện thống nhất Layered System: Hệ thống phân tầng Xây dựng REST API với Spring Boot Bước 1: Tạo Entity import javax.persistence.*; @Entity public class User { @Id @GeneratedValue(strategy = GenerationType.IDENTITY) private Long id; private String name; private String email; // Constructors, Getters, Setters public User() {} public User(String name, String email) { this.name = name; this.email = email; } // Getters and Setters... } Bước 2: Tạo Repository import org.springframework.data.jpa.repository.JpaRepository; public interface UserRepository extends JpaRepository { User findByEmail(String email); } Bước 3: Tạo REST Controller import org.springframework.beans.factory.annotation.Autowired; import org.springframework.http.ResponseEntity; import org.springframework.web.bind.annotation.*; import java.util.List; @RestController @RequestMapping(&#34;/api/users&#34;) public class UserController { @Autowired private UserRepository userRepository; // GET: Lấy tất cả users @GetMapping public List getAllUsers() { return userRepository.findAll(); } // GET: Lấy user theo ID @GetMapping(&#34;/{id}&#34;) public ResponseEntity getUserById(@PathVariable Long id) { User user = userRepository.findById(id) .orElseThrow(() -&gt; new ResourceNotFoundException(&#34;User not found&#34;)); return ResponseEntity.ok(user); } // POST: Tạo user mới @PostMapping public User createUser(@RequestBody User user) { return userRepository.save(user); } // PUT: Cập nhật user @PutMapping(&#34;/{id}&#34;) public ResponseEntity updateUser( @PathVariable Long id, @RequestBody User userDetails ) { User user = userRepository.findById(id) .orElseThrow(() -&gt; new ResourceNotFoundException(&#34;User not found&#34;)); user.setName(userDetails.getName()); user.setEmail(userDetails.getEmail()); User updatedUser = userRepository.save(user); return ResponseEntity.ok(updatedUser); } // DELETE: Xóa user @DeleteMapping(&#34;/{id}&#34;) public ResponseEntity deleteUser(@PathVariable Long id) { User user = userRepository.findById(id) .orElseThrow(() -&gt; new ResourceNotFoundException(&#34;User not found&#34;)); userRepository.delete(user); return ResponseEntity.ok().build(); } } Test API với cURL # GET tất cả users curl http://localhost:8080/api/users # POST tạo user mới curl -X POST http://localhost:8080/api/users \ -H &#34;Content-Type: application/json&#34; \ -d &#39;{&#34;name&#34;:&#34;John Doe&#34;,&#34;email&#34;:&#34;john@example.com&#34;}&#39; # GET user theo ID curl http://localhost:8080/api/users/1 # PUT cập nhật user curl -X PUT http://localhost:8080/api/users/1 \ -H &#34;Content-Type: application/json&#34; \ -d &#39;{&#34;name&#34;:&#34;Jane Doe&#34;,&#34;email&#34;:&#34;jane@example.com&#34;}&#39; # DELETE xóa user curl -X DELETE http://localhost:8080/api/users/1 Kết luận Spring Boot giúp xây dựng REST API nhanh chóng và dễ dàng. Việc hiểu rõ các HTTP methods và RESTful principles là nền tảng quan trọng trong lập trình mạng hiện đại.
+
+                </p>
+                <div class="pt-4 border-t border-slate-50 text-xs text-slate-400 flex justify-between">
+                    <span>12/12/2024</span>
+                    <a href="https://tuancuong2208.github.io/my-portfolio/posts/java-rest-api/" class="text-blue-600 font-bold hover:underline">Đọc ngay →</a>
+                </div>
+            </article>
+            
+            <article class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition border border-slate-100 flex flex-col">
+                <div class="text-xs font-bold text-blue-600 mb-2 uppercase tracking-wider">
+                    Blog
+                </div>
+                <h2 class="text-xl font-bold text-slate-800 mb-3">
+                    <a href="https://tuancuong2208.github.io/my-portfolio/posts/java-tcp-udp/" class="hover:text-blue-600">So sánh TCP và UDP trong Java: Lựa chọn giao thức phù hợp</a>
+                </h2>
+                <p class="text-slate-500 text-sm line-clamp-3 mb-4 flex-grow">
+                    Tổng quan về TCP và UDP TCP (Transmission Control Protocol) và UDP (User Datagram Protocol) là hai giao thức tầng transport chính trong mô hình TCP/IP. Mỗi giao thức có ưu nhược điểm riêng và phù hợp với các tình huống khác nhau.
+So sánh TCP vs UDP Đặc điểm TCP UDP Kiểu kết nối Connection-oriented Connectionless Độ tin cậy Đảm bảo gửi nhận Không đảm bảo Thứ tự dữ liệu Đảm bảo Không đảm bảo Tốc độ Chậm hơn Nhanh hơn Header size 20 bytes 8 bytes Kiểm tra lỗi Có Có (nhưng đơn giản) Flow control Có Không Ứng dụng HTTP, FTP, Email DNS, Streaming, Gaming Lập trình TCP trong Java TCP Server import java.io.*; import java.net.*; public class TCPServer { public static void main(String[] args) { try (ServerSocket serverSocket = new ServerSocket(5000)) { System.out.println(&#34;TCP Server đang chạy...&#34;); while (true) { Socket clientSocket = serverSocket.accept(); System.out.println(&#34;Client kết nối: &#34; + clientSocket.getInetAddress()); // Xử lý client trong thread riêng new Thread(() -&gt; handleClient(clientSocket)).start(); } } catch (IOException e) { e.printStackTrace(); } } private static void handleClient(Socket socket) { try ( BufferedReader in = new BufferedReader( new InputStreamReader(socket.getInputStream()) ); PrintWriter out = new PrintWriter( socket.getOutputStream(), true ) ) { String message = in.readLine(); System.out.println(&#34;Nhận: &#34; + message); out.println(&#34;Echo: &#34; + message); } catch (IOException e) { e.printStackTrace(); } } } TCP Client import java.io.*; import java.net.*; public class TCPClient { public static void main(String[] args) { try (Socket socket = new Socket(&#34;localhost&#34;, 5000)) { PrintWriter out = new PrintWriter( socket.getOutputStream(), true ); BufferedReader in = new BufferedReader( new InputStreamReader(socket.getInputStream()) ); out.println(&#34;Hello from TCP Client&#34;); String response = in.readLine(); System.out.println(&#34;Server phản hồi: &#34; + response); } catch (IOException e) { e.printStackTrace(); } } } Lập trình UDP trong Java UDP Server import java.net.*; public class UDPServer { public static void main(String[] args) { try (DatagramSocket socket = new DatagramSocket(5000)) { System.out.println(&#34;UDP Server đang chạy...&#34;); byte[] buffer = new byte[1024]; while (true) { DatagramPacket packet = new DatagramPacket( buffer, buffer.length ); socket.receive(packet); String message = new String( packet.getData(), 0, packet.getLength() ); System.out.println(&#34;Nhận: &#34; + message); // Gửi lại cho client String response = &#34;Echo: &#34; + message; byte[] responseData = response.getBytes(); DatagramPacket responsePacket = new DatagramPacket( responseData, responseData.length, packet.getAddress(), packet.getPort() ); socket.send(responsePacket); } } catch (Exception e) { e.printStackTrace(); } } } UDP Client import java.net.*; public class UDPClient { public static void main(String[] args) { try (DatagramSocket socket = new DatagramSocket()) { InetAddress address = InetAddress.getByName(&#34;localhost&#34;); String message = &#34;Hello from UDP Client&#34;; byte[] buffer = message.getBytes(); DatagramPacket packet = new DatagramPacket( buffer, buffer.length, address, 5000 ); socket.send(packet); // Nhận phản hồi byte[] responseBuffer = new byte[1024]; DatagramPacket responsePacket = new DatagramPacket( responseBuffer, responseBuffer.length ); socket.receive(responsePacket); String response = new String( responsePacket.getData(), 0, responsePacket.getLength() ); System.out.println(&#34;Server phản hồi: &#34; + response); } catch (Exception e) { e.printStackTrace(); } } } Khi nào dùng TCP, khi nào dùng UDP? Dùng TCP khi: Cần đảm bảo dữ liệu được gửi đến đầy đủ và đúng thứ tự Ứng dụng quan trọng (banking, e-commerce) File transfer, email, web browsing Dùng UDP khi: Tốc độ quan trọng hơn độ tin cậy Có thể chấp nhận mất một số gói tin Streaming video/audio, online gaming, DNS queries Kết luận Việc lựa chọn giữa TCP và UDP phụ thuộc vào yêu cầu cụ thể của ứng dụng. TCP phù hợp cho các ứng dụng cần độ tin cậy cao, trong khi UDP tối ưu cho các ứng dụng real-time cần tốc độ.
+
+                </p>
+                <div class="pt-4 border-t border-slate-50 text-xs text-slate-400 flex justify-between">
+                    <span>11/12/2024</span>
+                    <a href="https://tuancuong2208.github.io/my-portfolio/posts/java-tcp-udp/" class="text-blue-600 font-bold hover:underline">Đọc ngay →</a>
+                </div>
+            </article>
+            
+            <article class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition border border-slate-100 flex flex-col">
+                <div class="text-xs font-bold text-blue-600 mb-2 uppercase tracking-wider">
+                    Blog
+                </div>
+                <h2 class="text-xl font-bold text-slate-800 mb-3">
+                    <a href="https://tuancuong2208.github.io/my-portfolio/posts/js-fetch-api/" class="hover:text-blue-600">Fetch API trong JavaScript: Gửi HTTP Request hiện đại</a>
+                </h2>
+                <p class="text-slate-500 text-sm line-clamp-3 mb-4 flex-grow">
+                    Giới thiệu Fetch API Fetch API là một interface hiện đại trong JavaScript để thực hiện HTTP requests. Nó thay thế XMLHttpRequest cũ với cú pháp đơn giản hơn và dựa trên Promises.
+Cú pháp cơ bản fetch(url, options) .then(response =&gt; response.json()) .then(data =&gt; console.log(data)) .catch(error =&gt; console.error(&#39;Error:&#39;, error)); GET Request Ví dụ đơn giản fetch(&#39;https://api.github.com/users/github&#39;) .then(response =&gt; { if (!response.ok) { throw new Error(&#39;Network response was not ok&#39;); } return response.json(); }) .then(data =&gt; { console.log(&#39;User data:&#39;, data); console.log(&#39;Name:&#39;, data.name); console.log(&#39;Bio:&#39;, data.bio); }) .catch(error =&gt; { console.error(&#39;Fetch error:&#39;, error); }); Với async/await (Cách hiện đại) async function fetchUserData() { try { const response = await fetch(&#39;https://api.github.com/users/github&#39;); if (!response.ok) { throw new Error(`HTTP error! status: ${response.status}`); } const data = await response.json(); console.log(&#39;User data:&#39;, data); return data; } catch (error) { console.error(&#39;Error fetching data:&#39;, error); } } fetchUserData(); POST Request async function createPost() { const newPost = { title: &#39;My New Post&#39;, body: &#39;This is the content&#39;, userId: 1 }; try { const response = await fetch(&#39;https://jsonplaceholder.typicode.com/posts&#39;, { method: &#39;POST&#39;, headers: { &#39;Content-Type&#39;: &#39;application/json&#39;, }, body: JSON.stringify(newPost) }); if (!response.ok) { throw new Error(`HTTP error! status: ${response.status}`); } const data = await response.json(); console.log(&#39;Created post:&#39;, data); return data; } catch (error) { console.error(&#39;Error creating post:&#39;, error); } } createPost(); PUT Request (Cập nhật) async function updatePost(postId) { const updatedPost = { id: postId, title: &#39;Updated Title&#39;, body: &#39;Updated content&#39;, userId: 1 }; try { const response = await fetch( `https://jsonplaceholder.typicode.com/posts/${postId}`, { method: &#39;PUT&#39;, headers: { &#39;Content-Type&#39;: &#39;application/json&#39;, }, body: JSON.stringify(updatedPost) } ); const data = await response.json(); console.log(&#39;Updated post:&#39;, data); } catch (error) { console.error(&#39;Error updating post:&#39;, error); } } updatePost(1); DELETE Request async function deletePost(postId) { try { const response = await fetch( `https://jsonplaceholder.typicode.com/posts/${postId}`, { method: &#39;DELETE&#39; } ); if (response.ok) { console.log(&#39;Post deleted successfully&#39;); } } catch (error) { console.error(&#39;Error deleting post:&#39;, error); } } deletePost(1); Headers và Authentication async function fetchWithAuth() { try { const response = await fetch(&#39;https://api.example.com/data&#39;, { method: &#39;GET&#39;, headers: { &#39;Content-Type&#39;: &#39;application/json&#39;, &#39;Authorization&#39;: &#39;Bearer YOUR_TOKEN_HERE&#39;, &#39;Accept&#39;: &#39;application/json&#39; } }); const data = await response.json(); return data; } catch (error) { console.error(&#39;Error:&#39;, error); } } Xử lý nhiều requests đồng thời async function fetchMultipleUsers() { try { const promises = [ fetch(&#39;https://api.github.com/users/github&#39;), fetch(&#39;https://api.github.com/users/microsoft&#39;), fetch(&#39;https://api.github.com/users/google&#39;) ]; const responses = await Promise.all(promises); const users = await Promise.all( responses.map(response =&gt; response.json()) ); console.log(&#39;All users:&#39;, users); return users; } catch (error) { console.error(&#39;Error fetching users:&#39;, error); } } fetchMultipleUsers(); Kết luận Fetch API là công cụ mạnh mẽ và hiện đại để thực hiện HTTP requests trong JavaScript. Kết hợp với async/await, code trở nên dễ đọc và dễ bảo trì hơn nhiều so với XMLHttpRequest truyền thống.
+
+                </p>
+                <div class="pt-4 border-t border-slate-50 text-xs text-slate-400 flex justify-between">
+                    <span>10/12/2024</span>
+                    <a href="https://tuancuong2208.github.io/my-portfolio/posts/js-fetch-api/" class="text-blue-600 font-bold hover:underline">Đọc ngay →</a>
+                </div>
+            </article>
+            
+            <article class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition border border-slate-100 flex flex-col">
+                <div class="text-xs font-bold text-blue-600 mb-2 uppercase tracking-wider">
+                    Blog
+                </div>
+                <h2 class="text-xl font-bold text-slate-800 mb-3">
+                    <a href="https://tuancuong2208.github.io/my-portfolio/posts/js-websocket-client/" class="hover:text-blue-600">WebSocket Client với JavaScript: Kết nối real-time đến Server</a>
+                </h2>
+                <p class="text-slate-500 text-sm line-clamp-3 mb-4 flex-grow">
+                    WebSocket trong JavaScript JavaScript hỗ trợ WebSocket API ngay trong trình duyệt, cho phép tạo kết nối real-time với server mà không cần thư viện bên ngoài.
+Tạo WebSocket Connection // Tạo kết nối WebSocket const socket = new WebSocket(&#39;ws://localhost:8080/chat&#39;); // Event: Khi kết nối được mở socket.addEventListener(&#39;open&#39;, (event) =&gt; { console.log(&#39;Đã kết nối đến WebSocket server&#39;); socket.send(&#39;Hello Server!&#39;); }); // Event: Khi nhận message từ server socket.addEventListener(&#39;message&#39;, (event) =&gt; { console.log(&#39;Message từ server:&#39;, event.data); }); // Event: Khi có lỗi socket.addEventListener(&#39;error&#39;, (event) =&gt; { console.error(&#39;WebSocket error:&#39;, event); }); // Event: Khi kết nối đóng socket.addEventListener(&#39;close&#39;, (event) =&gt; { console.log(&#39;Kết nối đã đóng&#39;); }); Xây dựng Chat Application HTML WebSocket Chat #messages { height: 300px; border: 1px solid #ccc; overflow-y: auto; padding: 10px; margin-bottom: 10px; } .message { margin: 5px 0; padding: 5px; background: #f0f0f0; border-radius: 4px; } WebSocket Chat Gửi JavaScript (chat.js) class ChatClient { constructor(url) { this.socket = new WebSocket(url); this.messageContainer = document.getElementById(&#39;messages&#39;); this.messageInput = document.getElementById(&#39;messageInput&#39;); this.sendButton = document.getElementById(&#39;sendButton&#39;); this.init(); } init() { this.socket.onopen = () =&gt; { this.addMessage(&#39;Hệ thống: Đã kết nối đến server&#39;, &#39;system&#39;); }; this.socket.onmessage = (event) =&gt; { this.addMessage(event.data, &#39;received&#39;); }; this.socket.onerror = (error) =&gt; { this.addMessage(&#39;Lỗi: &#39; + error.message, &#39;error&#39;); }; this.socket.onclose = () =&gt; { this.addMessage(&#39;Hệ thống: Đã ngắt kết nối&#39;, &#39;system&#39;); }; this.sendButton.onclick = () =&gt; this.sendMessage(); this.messageInput.onkeypress = (e) =&gt; { if (e.key === &#39;Enter&#39;) { this.sendMessage(); } }; } sendMessage() { const message = this.messageInput.value.trim(); if (message &amp;&amp; this.socket.readyState === WebSocket.OPEN) { this.socket.send(message); this.addMessage(&#39;Bạn: &#39; + message, &#39;sent&#39;); this.messageInput.value = &#39;&#39;; } } addMessage(text, type) { const messageDiv = document.createElement(&#39;div&#39;); messageDiv.className = `message ${type}`; messageDiv.textContent = text; this.messageContainer.appendChild(messageDiv); this.messageContainer.scrollTop = this.messageContainer.scrollHeight; } } const chat = new ChatClient(&#39;ws://localhost:8080/chat&#39;); WebSocket States const socket = new WebSocket(&#39;ws://localhost:8080&#39;); switch (socket.readyState) { case WebSocket.CONNECTING: console.log(&#39;Đang kết nối...&#39;); break; case WebSocket.OPEN: console.log(&#39;Đã kết nối&#39;); break; case WebSocket.CLOSING: console.log(&#39;Đang đóng kết nối...&#39;); break; case WebSocket.CLOSED: console.log(&#39;Đã đóng kết nối&#39;); break; } Tự động kết nối lại class ReconnectingWebSocket { constructor(url) { this.url = url; this.reconnectInterval = 3000; this.connect(); } connect() { this.socket = new WebSocket(this.url); this.socket.onopen = () =&gt; { console.log(&#39;Đã kết nối&#39;); }; this.socket.onclose = () =&gt; { console.log(&#39;Mất kết nối, đang thử kết nối lại...&#39;); setTimeout(() =&gt; this.connect(), this.reconnectInterval); }; this.socket.onerror = (error) =&gt; { console.error(&#39;Lỗi WebSocket:&#39;, error); this.socket.close(); }; } send(data) { if (this.socket.readyState === WebSocket.OPEN) { this.socket.send(data); } else { console.warn(&#39;WebSocket chưa sẵn sàng&#39;); } } } Kết luận WebSocket API trong JavaScript rất mạnh mẽ và dễ sử dụng. Nó là lựa chọn tốt nhất cho các ứng dụng cần giao tiếp real-time như chat, notifications, live updates.
+
+                </p>
+                <div class="pt-4 border-t border-slate-50 text-xs text-slate-400 flex justify-between">
+                    <span>09/12/2024</span>
+                    <a href="https://tuancuong2208.github.io/my-portfolio/posts/js-websocket-client/" class="text-blue-600 font-bold hover:underline">Đọc ngay →</a>
+                </div>
+            </article>
+            
+            <article class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition border border-slate-100 flex flex-col">
+                <div class="text-xs font-bold text-blue-600 mb-2 uppercase tracking-wider">
+                    Blog
+                </div>
+                <h2 class="text-xl font-bold text-slate-800 mb-3">
+                    <a href="https://tuancuong2208.github.io/my-portfolio/posts/js-nodejs-server/" class="hover:text-blue-600">Xây dựng HTTP Server đơn giản với Node.js</a>
+                </h2>
+                <p class="text-slate-500 text-sm line-clamp-3 mb-4 flex-grow">
+                    Giới thiệu Node.js Node.js là một JavaScript runtime được xây dựng trên V8 engine của Chrome. Nó cho phép chạy JavaScript ở phía server, rất mạnh mẽ cho việc xây dựng các ứng dụng network.
+HTTP Server cơ bản const http = require(&#39;http&#39;); const server = http.createServer((req, res) =&gt; { res.statusCode = 200; res.setHeader(&#39;Content-Type&#39;, &#39;text/plain; charset=utf-8&#39;); res.end(&#39;Xin chào từ Node.js Server!&#39;); }); const PORT = 3000; server.listen(PORT, () =&gt; { console.log(`Server đang chạy tại http://localhost:${PORT}`); }); Xử lý Routes const http = require(&#39;http&#39;); const url = require(&#39;url&#39;); const server = http.createServer((req, res) =&gt; { const parsedUrl = url.parse(req.url, true); const path = parsedUrl.pathname; const method = req.method; res.setHeader(&#39;Content-Type&#39;, &#39;application/json&#39;); if (path === &#39;/&#39; &amp;&amp; method === &#39;GET&#39;) { res.statusCode = 200; res.end(JSON.stringify({ message: &#39;Chào mừng đến với API&#39;, endpoints: [&#39;/users&#39;, &#39;/products&#39;] })); } else if (path === &#39;/users&#39; &amp;&amp; method === &#39;GET&#39;) { res.statusCode = 200; res.end(JSON.stringify({ users: [ { id: 1, name: &#39;Nguyễn Văn A&#39; }, { id: 2, name: &#39;Trần Thị B&#39; } ] })); } else { res.statusCode = 404; res.end(JSON.stringify({ error: &#39;Route không tồn tại&#39; })); } }); const PORT = 3000; server.listen(PORT, () =&gt; { console.log(`Server đang chạy tại http://localhost:${PORT}`); }); Xử lý POST Request const http = require(&#39;http&#39;); const server = http.createServer((req, res) =&gt; { if (req.url === &#39;/api/users&#39; &amp;&amp; req.method === &#39;POST&#39;) { let body = &#39;&#39;; req.on(&#39;data&#39;, chunk =&gt; { body += chunk.toString(); }); req.on(&#39;end&#39;, () =&gt; { try { const userData = JSON.parse(body); console.log(&#39;Nhận được user data:&#39;, userData); res.statusCode = 201; res.setHeader(&#39;Content-Type&#39;, &#39;application/json&#39;); res.end(JSON.stringify({ message: &#39;Tạo user thành công&#39;, user: userData })); } catch (error) { res.statusCode = 400; res.end(JSON.stringify({ error: &#39;Invalid JSON&#39; })); } }); } else { res.statusCode = 404; res.end(&#39;Not Found&#39;); } }); server.listen(3000, () =&gt; { console.log(&#39;Server running on port 3000&#39;); }); REST API đơn giản const http = require(&#39;http&#39;); const url = require(&#39;url&#39;); let users = [ { id: 1, name: &#39;John Doe&#39;, email: &#39;john@example.com&#39; }, { id: 2, name: &#39;Jane Smith&#39;, email: &#39;jane@example.com&#39; } ]; let nextId = 3; const server = http.createServer((req, res) =&gt; { const parsedUrl = url.parse(req.url, true); const path = parsedUrl.pathname; const method = req.method; res.setHeader(&#39;Content-Type&#39;, &#39;application/json&#39;); if (path === &#39;/api/users&#39; &amp;&amp; method === &#39;GET&#39;) { res.statusCode = 200; res.end(JSON.stringify(users)); } else if (path.match(/^\/api\/users\/\d+$/) &amp;&amp; method === &#39;GET&#39;) { const id = parseInt(path.split(&#39;/&#39;)[3]); const user = users.find(u =&gt; u.id === id); if (user) { res.statusCode = 200; res.end(JSON.stringify(user)); } else { res.statusCode = 404; res.end(JSON.stringify({ error: &#39;User not found&#39; })); } } else if (path === &#39;/api/users&#39; &amp;&amp; method === &#39;POST&#39;) { let body = &#39;&#39;; req.on(&#39;data&#39;, chunk =&gt; { body += chunk.toString(); }); req.on(&#39;end&#39;, () =&gt; { const newUser = JSON.parse(body); newUser.id = nextId++; users.push(newUser); res.statusCode = 201; res.end(JSON.stringify(newUser)); }); } else { res.statusCode = 404; res.end(JSON.stringify({ error: &#39;Route not found&#39; })); } }); const PORT = 3000; server.listen(PORT, () =&gt; { console.log(`REST API Server running on http://localhost:${PORT}`); }); Sử dụng Express.js const express = require(&#39;express&#39;); const app = express(); app.use(express.json()); app.get(&#39;/&#39;, (req, res) =&gt; { res.json({ message: &#39;Chào mừng đến với Express API&#39; }); }); app.get(&#39;/users/:id&#39;, (req, res) =&gt; { const userId = req.params.id; res.json({ userId, name: &#39;User &#39; + userId }); }); app.post(&#39;/users&#39;, (req, res) =&gt; { const userData = req.body; res.status(201).json({ message: &#39;User created&#39;, user: userData }); }); const PORT = 3000; app.listen(PORT, () =&gt; { console.log(`Express server running on port ${PORT}`); }); Kết luận Node.js là công cụ mạnh mẽ để xây dựng server-side applications. Module http built-in cho phép tạo server cơ bản, trong khi Express.js giúp code ngắn gọn và dễ bảo trì hơn.
+
+                </p>
+                <div class="pt-4 border-t border-slate-50 text-xs text-slate-400 flex justify-between">
+                    <span>08/12/2024</span>
+                    <a href="https://tuancuong2208.github.io/my-portfolio/posts/js-nodejs-server/" class="text-blue-600 font-bold hover:underline">Đọc ngay →</a>
+                </div>
+            </article>
+            
+            <article class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition border border-slate-100 flex flex-col">
+                <div class="text-xs font-bold text-blue-600 mb-2 uppercase tracking-wider">
+                    Blog
+                </div>
+                <h2 class="text-xl font-bold text-slate-800 mb-3">
+                    <a href="https://tuancuong2208.github.io/my-portfolio/posts/js-ajax-techniques/" class="hover:text-blue-600">AJAX và XMLHttpRequest: Kỹ thuật bất đồng bộ trong JavaScript</a>
+                </h2>
+                <p class="text-slate-500 text-sm line-clamp-3 mb-4 flex-grow">
+                    AJAX là gì? AJAX (Asynchronous JavaScript and XML) là kỹ thuật cho phép web applications gửi và nhận dữ liệu từ server bất đồng bộ mà không cần reload trang. Mặc dù tên có &ldquo;XML&rdquo; nhưng ngày nay AJAX thường dùng với JSON.
+XMLHttpRequest - Cách truyền thống GET Request cơ bản const xhr = new XMLHttpRequest(); xhr.open(&#39;GET&#39;, &#39;https://api.github.com/users/github&#39;, true); xhr.onload = function() { if (xhr.status === 200) { const data = JSON.parse(xhr.responseText); console.log(&#39;User data:&#39;, data); } else { console.error(&#39;Error:&#39;, xhr.status); } }; xhr.onerror = function() { console.error(&#39;Request failed&#39;); }; xhr.send(); POST Request với XMLHttpRequest const xhr = new XMLHttpRequest(); xhr.open(&#39;POST&#39;, &#39;https://jsonplaceholder.typicode.com/posts&#39;, true); xhr.setRequestHeader(&#39;Content-Type&#39;, &#39;application/json&#39;); xhr.onload = function() { if (xhr.status === 201) { const response = JSON.parse(xhr.responseText); console.log(&#39;Created:&#39;, response); } }; const postData = { title: &#39;My Post&#39;, body: &#39;This is content&#39;, userId: 1 }; xhr.send(JSON.stringify(postData)); Theo dõi Progress Upload/Download const xhr = new XMLHttpRequest(); xhr.upload.addEventListener(&#39;progress&#39;, (e) =&gt; { if (e.lengthComputable) { const percentComplete = (e.loaded / e.total) * 100; console.log(`Upload: ${percentComplete.toFixed(2)}%`); } }); xhr.addEventListener(&#39;progress&#39;, (e) =&gt; { if (e.lengthComputable) { const percentComplete = (e.loaded / e.total) * 100; console.log(`Download: ${percentComplete.toFixed(2)}%`); } }); xhr.open(&#39;POST&#39;, &#39;/api/upload&#39;, true); xhr.send(formData); Timeout và Abort const xhr = new XMLHttpRequest(); xhr.open(&#39;GET&#39;, &#39;https://api.example.com/data&#39;, true); xhr.timeout = 5000; xhr.ontimeout = function() { console.error(&#39;Request timed out&#39;); }; xhr.onload = function() { console.log(&#39;Data:&#39;, xhr.responseText); }; xhr.send(); setTimeout(() =&gt; { xhr.abort(); console.log(&#39;Request aborted&#39;); }, 2000); AJAX với jQuery GET Request $.ajax({ url: &#39;https://api.github.com/users/github&#39;, method: &#39;GET&#39;, success: function(data) { console.log(&#39;User:&#39;, data); }, error: function(xhr, status, error) { console.error(&#39;Error:&#39;, error); } }); $.get(&#39;https://api.github.com/users/github&#39;, function(data) { console.log(&#39;User:&#39;, data); }); POST Request $.ajax({ url: &#39;https://jsonplaceholder.typicode.com/posts&#39;, method: &#39;POST&#39;, data: JSON.stringify({ title: &#39;My Post&#39;, body: &#39;Content here&#39;, userId: 1 }), contentType: &#39;application/json&#39;, success: function(response) { console.log(&#39;Created:&#39;, response); } }); So sánh XMLHttpRequest vs Fetch API Đặc điểm XMLHttpRequest Fetch API Cú pháp Phức tạp Đơn giản, Promises Browser support Tất cả Modern browsers Progress tracking Dễ Khó hơn Ví dụ thực tế: Load dữ liệu động function loadUsers() { const xhr = new XMLHttpRequest(); xhr.open(&#39;GET&#39;, &#39;https://jsonplaceholder.typicode.com/users&#39;, true); xhr.onload = function() { if (xhr.status === 200) { const users = JSON.parse(xhr.responseText); displayUsers(users); } }; xhr.send(); } function displayUsers(users) { const container = document.getElementById(&#39;users-container&#39;); container.innerHTML = &#39;&#39;; users.forEach(user =&gt; { const userDiv = document.createElement(&#39;div&#39;); userDiv.className = &#39;user-card&#39;; userDiv.innerHTML = ` ${user.name} Email: ${user.email} Phone: ${user.phone} `; container.appendChild(userDiv); }); } document.addEventListener(&#39;DOMContentLoaded&#39;, loadUsers); Form Submit với AJAX document.getElementById(&#39;myForm&#39;).addEventListener(&#39;submit&#39;, function(e) { e.preventDefault(); const formData = new FormData(this); const xhr = new XMLHttpRequest(); xhr.open(&#39;POST&#39;, &#39;/api/submit&#39;, true); xhr.onload = function() { if (xhr.status === 200) { const response = JSON.parse(xhr.responseText); alert(&#39;Success: &#39; + response.message); } else { alert(&#39;Error: &#39; + xhr.status); } }; xhr.send(formData); }); Kết luận XMLHttpRequest là nền tảng của AJAX và vẫn hữu ích trong nhiều trường hợp, đặc biệt khi cần tracking progress. Tuy nhiên, với các dự án mới, Fetch API với async/await là lựa chọn hiện đại và dễ sử dụng hơn.
+
+                </p>
+                <div class="pt-4 border-t border-slate-50 text-xs text-slate-400 flex justify-between">
+                    <span>07/12/2024</span>
+                    <a href="https://tuancuong2208.github.io/my-portfolio/posts/js-ajax-techniques/" class="text-blue-600 font-bold hover:underline">Đọc ngay →</a>
+                </div>
+            </article>
+            
+        </div>
+
+        <div class="text-center mt-12">
+            <a href="https://tuancuong2208.github.io/my-portfolio/" class="inline-block border border-slate-300 px-6 py-2 rounded-full text-slate-600 hover:bg-white hover:border-blue-500 hover:text-blue-600 transition">
+                ← Quay lại trang chủ
+            </a>
+        </div>
+    </div>
+</section>
+
+    </main>
+
+    <footer class="bg-slate-50 py-8 border-t border-slate-200 mt-auto">
+        <div class="container mx-auto px-6 text-center text-slate-500 text-sm">
+            <p>© 2024 Nguyễn Tuấn Cường. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="lightbox-modal" class="fixed inset-0 z-[100] bg-black/90 hidden flex items-center justify-center p-4 backdrop-blur-sm" onclick="closeLightbox()">
+        <div class="relative max-w-6xl w-full h-full flex items-center justify-center">
+             <img id="lightbox-image" src="" alt="Fullsize Image" class="max-h-[90vh] max-w-full object-contain rounded-lg shadow-2xl scale-95 transition-transform duration-300" onclick="event.stopPropagation()">
+             <button onclick="closeLightbox()" class="absolute top-4 right-4 md:-top-10 md:-right-10 text-white/70 hover:text-white bg-black/50 hover:bg-black/80 rounded-full p-2 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+             </button>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById('lightbox-modal');
+        const img = document.getElementById('lightbox-image');
+
+        function openLightbox(imageSrc) {
+            img.src = imageSrc;
+            modal.classList.remove('hidden');
+            setTimeout(() => img.classList.remove('scale-95'), 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            img.classList.add('scale-95');
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+            setTimeout(() => img.src = '', 300);
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                closeLightbox();
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -102,7 +102,8 @@
 <section id="about" class="py-32 bg-white relative">
     <div class="container mx-auto px-6 max-w-6xl animate-compact delay-100">
         <div class="grid md:grid-cols-12 gap-16 items-center">
-            <div class="md:col-span-5 relative group mx-auto md:mx-0 w-72 md:w-full max-w-sm">
+            
+            <div class="md:col-span-5 relative group mx-auto md:mx-0 w-72 md:w-full max-w-[300px] md:max-w-sm">
                 <div class="absolute inset-0 bg-gradient-to-tr from-blue-600 to-blue-400 rounded-3xl rotate-6 opacity-10 group-hover:rotate-12 transition duration-500"></div>
                 <div class="relative rounded-3xl overflow-hidden shadow-2xl border-[6px] border-white">
                     <img src="images/avatar.jpg" alt="Avatar" class="w-full h-auto object-cover transform group-hover:scale-105 transition duration-500 scale-100"
@@ -120,12 +121,12 @@
                         Xin chào! Tôi là sinh viên năm cuối đầy nhiệt huyết tại <strong class="text-blue-700 relative inline-block">HUTECH<span class="absolute bottom-0 left-0 w-full h-1 bg-blue-200/50 -z-10"></span></strong>.
                     </p>
                     <p>
-                        Hành trình của tôi tập trung vào việc làm chủ ngôn ngữ <strong>Java</strong> và các công nghệ liên quan như <strong>Spring Boot</strong>. Tôi đam mê giải quyết các bài toán phức tạp về hệ thống, tối ưu hóa hiệu suất và đảm bảo an toàn thông tin trên môi trường mạng. Mục tiêu của tôi là trở thành một chuyên gia Backend đáng tin cậy.
+                        Hành trình của tôi tập trung vào việc làm chủ ngôn ngữ <strong>Java</strong> và các công nghệ liên quan như <strong>Spring Boot</strong>. Tôi đam mê giải quyết các bài toán phức tạp về hệ thống, tối ưu hóa hiệu suất và đảm bảo an toàn thông tin trên môi trường mạng.
                     </p>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div class="bg-blue-50/50 rounded-2xl p-5 border border-blue-100 flex items-start">
+                    <div class="bg-blue-50/50 rounded-2xl p-5 border border-blue-100 flex items-start hover:bg-blue-50 transition">
                         <div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-blue-600 shadow-sm mr-4 flex-shrink-0">
                              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
                         </div>
@@ -134,13 +135,24 @@
                             <span class="text-slate-900 font-semibold">Java Backend, Mạng Máy Tính, Bảo mật hệ thống</span>
                         </div>
                     </div>
-                    <div class="bg-blue-50/50 rounded-2xl p-5 border border-blue-100 flex items-start">
+
+                    <div class="bg-blue-50/50 rounded-2xl p-5 border border-blue-100 flex items-start hover:bg-blue-50 transition">
                         <div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-blue-600 shadow-sm mr-4 flex-shrink-0">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
                         </div>
                         <div>
-                            <span class="block text-xs text-slate-500 uppercase font-bold tracking-wider mb-1">Liên hệ</span>
-                            <a href="mailto:nguyentuancuong626tp@gmail.com" class="text-blue-700 hover:underline font-semibold">nguyentuancuong626tp@gmail.com</a>
+                            <span class="block text-xs text-slate-500 uppercase font-bold tracking-wider mb-1">Email liên hệ</span>
+                            <a href="mailto:nguyentuancuong626tp@gmail.com" class="text-blue-700 hover:underline font-semibold break-all">nguyentuancuong626tp@gmail.com</a>
+                        </div>
+                    </div>
+
+                    <div class="bg-blue-50/50 rounded-2xl p-5 border border-blue-100 flex items-start hover:bg-blue-50 transition sm:col-span-2">
+                        <div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-blue-600 shadow-sm mr-4 flex-shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                        </div>
+                        <div>
+                            <span class="block text-xs text-slate-500 uppercase font-bold tracking-wider mb-1">Điện thoại</span>
+                            <span class="text-slate-900 font-semibold">0975726059</span>
                         </div>
                     </div>
                 </div>
@@ -209,7 +221,7 @@
                 <h2 class="text-4xl font-bold text-slate-900 tracking-tight mb-3">Góc Chia Sẻ</h2>
                 <p class="text-slate-500 text-lg">Kiến thức & Kinh nghiệm thực chiến</p>
             </div>
-            <a href="#" class="hidden md:inline-flex items-center text-blue-600 font-bold hover:bg-blue-50 px-5 py-2.5 rounded-xl transition group">
+            <a href="https://tuancuong2208.github.io/my-portfolio/posts/" class="hidden md:inline-flex items-center text-blue-600 font-bold hover:bg-blue-50 px-5 py-2.5 rounded-xl transition group">
                 Xem tất cả bài viết 
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
             </a>
@@ -310,7 +322,7 @@
         </div>
         
         <div class="mt-12 text-center md:hidden">
-             <a href="#" class="inline-flex items-center bg-slate-900 text-white font-bold px-8 py-3 rounded-full hover:bg-slate-800 transition shadow-lg shadow-slate-200">
+            <a href="https://tuancuong2208.github.io/my-portfolio/posts/" class="inline-flex items-center bg-slate-900 text-white font-bold px-8 py-3 rounded-full hover:bg-slate-800 transition shadow-lg shadow-slate-200">
                 Xem tất cả bài viết
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
              </a>

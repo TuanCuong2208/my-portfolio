@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+         
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #2563eb; }
+        
+         
+        #lightbox-modal { transition: opacity 0.3s ease, visibility 0.3s ease; }
+        #lightbox-modal.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+        #lightbox-modal:not(.hidden) { opacity: 1; visibility: visible; pointer-events: auto; }
+    </style>
+</head>
+<body class="bg-white text-slate-800 font-sans leading-relaxed relative">
+
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-sm z-50 border-b border-slate-100">
+        <div class="container mx-auto px-6 py-4 relative flex items-center justify-center">
+            <a href="https://tuancuong2208.github.io/my-portfolio/" class="text-2xl font-bold text-blue-600 tracking-tighter absolute left-6 md:left-0">NTC<span class="text-slate-400">.Dev</span></a>
+            
+            <ul class="hidden md:flex space-x-10 font-medium text-[15px]">
+                
+                <li>
+                    <a href="/my-portfolio/#home" class="text-slate-600 hover:text-blue-600 transition-colors py-2 relative group">
+                        Trang Chủ
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="/my-portfolio/#about" class="text-slate-600 hover:text-blue-600 transition-colors py-2 relative group">
+                        Về Tôi
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="/my-portfolio/#certificates" class="text-slate-600 hover:text-blue-600 transition-colors py-2 relative group">
+                        Chứng Chỉ
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="/my-portfolio/#blog" class="text-slate-600 hover:text-blue-600 transition-colors py-2 relative group">
+                        Blog
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        
+<section class="pt-32 pb-20 bg-slate-50 min-h-screen">
+    <div class="container mx-auto px-6 max-w-5xl">
+        <div class="text-center mb-16">
+            <h1 class="text-4xl font-bold text-slate-900 mb-4">Tất cả bài viết</h1>
+            <p class="text-slate-500">Kho tàng kiến thức của Nguyễn Tuấn Cường</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+        </div>
+
+        <div class="text-center mt-12">
+            <a href="https://tuancuong2208.github.io/my-portfolio/" class="inline-block border border-slate-300 px-6 py-2 rounded-full text-slate-600 hover:bg-white hover:border-blue-500 hover:text-blue-600 transition">
+                ← Quay lại trang chủ
+            </a>
+        </div>
+    </div>
+</section>
+
+    </main>
+
+    <footer class="bg-slate-50 py-8 border-t border-slate-200 mt-auto">
+        <div class="container mx-auto px-6 text-center text-slate-500 text-sm">
+            <p>© 2024 Nguyễn Tuấn Cường. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="lightbox-modal" class="fixed inset-0 z-[100] bg-black/90 hidden flex items-center justify-center p-4 backdrop-blur-sm" onclick="closeLightbox()">
+        <div class="relative max-w-6xl w-full h-full flex items-center justify-center">
+             <img id="lightbox-image" src="" alt="Fullsize Image" class="max-h-[90vh] max-w-full object-contain rounded-lg shadow-2xl scale-95 transition-transform duration-300" onclick="event.stopPropagation()">
+             <button onclick="closeLightbox()" class="absolute top-4 right-4 md:-top-10 md:-right-10 text-white/70 hover:text-white bg-black/50 hover:bg-black/80 rounded-full p-2 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+             </button>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById('lightbox-modal');
+        const img = document.getElementById('lightbox-image');
+
+        function openLightbox(imageSrc) {
+            img.src = imageSrc;
+            modal.classList.remove('hidden');
+            setTimeout(() => img.classList.remove('scale-95'), 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            img.classList.add('scale-95');
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+            setTimeout(() => img.src = '', 300);
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                closeLightbox();
+            }
+        });
+    </script>
+
+</body>
+</html>
