@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Nguyễn Tuấn Cường - Portfolio</title>
-    <link>https://github.com/TuanCuong2208/my-portfolio/tags/</link>
+    <link>https://tuancuong2208.github.io/my-portfolio/tags/</link>
     <description>Recent content in Tags on Nguyễn Tuấn Cường - Portfolio</description>
     <generator>Hugo</generator>
     <language>vi</language>
-    <atom:link href="https://github.com/TuanCuong2208/my-portfolio/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://tuancuong2208.github.io/my-portfolio/tags/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

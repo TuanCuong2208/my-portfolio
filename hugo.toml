@@ -1,4 +1,4 @@
-baseURL = 'https://github.com/TuanCuong2208/my-portfolio' # Thay bằng link GitHub Pages sau này
+baseURL = 'https://tuancuong2208.github.io/my-portfolio/' # Thay bằng link GitHub Pages sau này
 languageCode = 'vi'
 title = 'Nguyễn Tuấn Cường - Portfolio'
 theme = [] # Không dùng theme có sẵn, tự code layout
