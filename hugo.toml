@@ -1,0 +1,33 @@
+baseURL = 'https://github.com/TuanCuong2208/my-portfolio' # Thay bằng link GitHub Pages sau này
+languageCode = 'vi'
+title = 'Nguyễn Tuấn Cường - Portfolio'
+theme = [] # Không dùng theme có sẵn, tự code layout
+
+[params]
+  description = "Chuyên gia Lập trình Mạng & Java"
+  phone = "0975726059"
+  email = "nguyentuancuong626tp@gmail.com"
+  school = "Đại học Công nghệ HUTECH"
+  primaryColor = "blue-600" # Tông xanh dương chủ đạo
+
+# Menu điều hướng (Smooth Scroll)
+[[menu.main]]
+  name = "Trang Chủ"
+  url = "#home"
+  weight = 1
+
+[[menu.main]]
+  name = "Về Tôi"
+  url = "#about"
+  weight = 2
+
+[[menu.main]]
+  name = "Chứng Chỉ"
+  url = "#certificates"
+  weight = 3
+
+[[menu.main]]
+  name = "Blog"
+  url = "#blog"
+  weight = 4
+  publishDir = "docs"

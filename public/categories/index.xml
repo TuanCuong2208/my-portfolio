@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Nguyễn Tuấn Cường - Portfolio</title>
+    <link>https://github.com/TuanCuong2208/my-portfolio/categories/</link>
+    <description>Recent content in Categories on Nguyễn Tuấn Cường - Portfolio</description>
+    <generator>Hugo</generator>
+    <language>vi</language>
+    <atom:link href="https://github.com/TuanCuong2208/my-portfolio/categories/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

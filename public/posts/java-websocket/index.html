@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Server với Java: Giao tiếp thời gian thực</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+         
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #2563eb; }
+    </style>
+</head>
+<body class="bg-white text-slate-800 font-sans leading-relaxed">
+
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-md shadow-sm z-50 border-b border-slate-100">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-blue-600 tracking-tighter">NTC<span class="text-slate-400">.Dev</span></a>
+            <ul class="hidden md:flex space-x-8 font-medium">
+                
+                <li><a href="/TuanCuong2208/my-portfolio/#home" class="hover:text-blue-600 transition-colors">Trang Chủ</a></li>
+                
+                <li><a href="/TuanCuong2208/my-portfolio/#about" class="hover:text-blue-600 transition-colors">Về Tôi</a></li>
+                
+                <li><a href="/TuanCuong2208/my-portfolio/#certificates" class="hover:text-blue-600 transition-colors">Chứng Chỉ</a></li>
+                
+                <li><a href="/TuanCuong2208/my-portfolio/#blog" class="hover:text-blue-600 transition-colors">Blog</a></li>
+                
+            </ul>
+        </div>
+    </nav>
+
+    <main class="mt-16">
+        
+<div class="pt-24 pb-20 bg-white">
+    <article class="container mx-auto px-6 max-w-3xl">
+        <header class="mb-10 text-center">
+            <div class="text-blue-600 font-semibold mb-2 text-sm uppercase tracking-wider">
+                
+            </div>
+            <h1 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">WebSocket Server với Java: Giao tiếp thời gian thực</h1>
+            <time class="text-slate-500">13 tháng 12, 2024</time>
+        </header>
+        
+        <div class="prose prose-lg prose-slate prose-a:text-blue-600 hover:prose-a:text-blue-700 mx-auto">
+            <h2 id="websocket-là-gì">WebSocket là gì?</h2>
+<p>WebSocket là giao thức cung cấp kênh giao tiếp song công (full-duplex) qua một kết nối TCP duy nhất. Khác với HTTP truyền thống (request-response), WebSocket cho phép server chủ động gửi dữ liệu đến client.</p>
+<h2 id="ứng-dụng-của-websocket">Ứng dụng của WebSocket</h2>
+<ul>
+<li>Chat applications</li>
+<li>Real-time notifications</li>
+<li>Live sports scores</li>
+<li>Collaborative editing</li>
+<li>Online gaming</li>
+</ul>
+<h2 id="xây-dựng-websocket-server-với-java-ee">Xây dựng WebSocket Server với Java EE</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> javax.websocket.*;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> javax.websocket.server.ServerEndpoint;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.io.IOException;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.Set;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.concurrent.CopyOnWriteArraySet;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@ServerEndpoint</span>(<span style="color:#e6db74">&#34;/chat&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ChatServer</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> Set clients <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> CopyOnWriteArraySet<span style="color:#f92672">&lt;&gt;</span>();
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@OnOpen</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onOpen</span>(Session session) {
+</span></span><span style="display:flex;"><span>        clients.<span style="color:#a6e22e">add</span>(session);
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Kết nối mới: &#34;</span> <span style="color:#f92672">+</span> session.<span style="color:#a6e22e">getId</span>());
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@OnMessage</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onMessage</span>(String message, Session session) {
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Nhận tin nhắn: &#34;</span> <span style="color:#f92672">+</span> message);
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Broadcast đến tất cả clients</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (Session client : clients) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>                client.<span style="color:#a6e22e">getBasicRemote</span>().<span style="color:#a6e22e">sendText</span>(message);
+</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">catch</span> (IOException e) {
+</span></span><span style="display:flex;"><span>                e.<span style="color:#a6e22e">printStackTrace</span>();
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@OnClose</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onClose</span>(Session session) {
+</span></span><span style="display:flex;"><span>        clients.<span style="color:#a6e22e">remove</span>(session);
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Ngắt kết nối: &#34;</span> <span style="color:#f92672">+</span> session.<span style="color:#a6e22e">getId</span>());
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@OnError</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onError</span>(Session session, Throwable throwable) {
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">err</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Lỗi: &#34;</span> <span style="color:#f92672">+</span> throwable.<span style="color:#a6e22e">getMessage</span>());
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="websocket-với-spring-boot">WebSocket với Spring Boot</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.web.socket.TextMessage;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.web.socket.WebSocketSession;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.web.socket.handler.TextWebSocketHandler;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ChatWebSocketHandler</span> <span style="color:#66d9ef">extends</span> TextWebSocketHandler {
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">handleTextMessage</span>(
+</span></span><span style="display:flex;"><span>        WebSocketSession session, 
+</span></span><span style="display:flex;"><span>        TextMessage message
+</span></span><span style="display:flex;"><span>    ) <span style="color:#66d9ef">throws</span> Exception {
+</span></span><span style="display:flex;"><span>        String payload <span style="color:#f92672">=</span> message.<span style="color:#a6e22e">getPayload</span>();
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Nhận: &#34;</span> <span style="color:#f92672">+</span> payload);
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        session.<span style="color:#a6e22e">sendMessage</span>(<span style="color:#66d9ef">new</span> TextMessage(<span style="color:#e6db74">&#34;Echo: &#34;</span> <span style="color:#f92672">+</span> payload));
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="cấu-hình-websocket-trong-spring-boot">Cấu hình WebSocket trong Spring Boot</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.context.annotation.Configuration;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.web.socket.config.annotation.*;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Configuration</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@EnableWebSocket</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">WebSocketConfig</span> <span style="color:#66d9ef">implements</span> WebSocketConfigurer {
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">registerWebSocketHandlers</span>(
+</span></span><span style="display:flex;"><span>        WebSocketHandlerRegistry registry
+</span></span><span style="display:flex;"><span>    ) {
+</span></span><span style="display:flex;"><span>        registry.<span style="color:#a6e22e">addHandler</span>(<span style="color:#66d9ef">new</span> ChatWebSocketHandler(), <span style="color:#e6db74">&#34;/chat&#34;</span>)
+</span></span><span style="display:flex;"><span>                .<span style="color:#a6e22e">setAllowedOrigins</span>(<span style="color:#e6db74">&#34;*&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="kết-luận">Kết luận</h2>
+<p>WebSocket là công nghệ quan trọng cho các ứng dụng real-time. Java cung cấp nhiều cách để implement WebSocket, từ Java EE chuẩn đến Spring Framework.</p>
+
+        </div>
+
+        <div class="mt-12 text-center">
+            <a href="/#blog" class="inline-block px-6 py-2 border border-blue-600 text-blue-600 rounded-full hover:bg-blue-50 transition">← Quay lại trang chủ</a>
+        </div>
+    </article>
+</div>
+
+    </main>
+
+    <footer class="bg-slate-50 py-8 border-t border-slate-200 mt-20">
+        <div class="container mx-auto px-6 text-center text-slate-500 text-sm">
+            <p>&copy; 2024 Nguyễn Tuấn Cường. Sinh viên HUTECH.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

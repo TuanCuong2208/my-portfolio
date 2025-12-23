@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>So sánh TCP và UDP trong Java: Lựa chọn giao thức phù hợp</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+         
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #2563eb; }
+    </style>
+</head>
+<body class="bg-white text-slate-800 font-sans leading-relaxed">
+
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-md shadow-sm z-50 border-b border-slate-100">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-blue-600 tracking-tighter">NTC<span class="text-slate-400">.Dev</span></a>
+            <ul class="hidden md:flex space-x-8 font-medium">
+                
+                <li><a href="/TuanCuong2208/my-portfolio/#home" class="hover:text-blue-600 transition-colors">Trang Chủ</a></li>
+                
+                <li><a href="/TuanCuong2208/my-portfolio/#about" class="hover:text-blue-600 transition-colors">Về Tôi</a></li>
+                
+                <li><a href="/TuanCuong2208/my-portfolio/#certificates" class="hover:text-blue-600 transition-colors">Chứng Chỉ</a></li>
+                
+                <li><a href="/TuanCuong2208/my-portfolio/#blog" class="hover:text-blue-600 transition-colors">Blog</a></li>
+                
+            </ul>
+        </div>
+    </nav>
+
+    <main class="mt-16">
+        
+<div class="pt-24 pb-20 bg-white">
+    <article class="container mx-auto px-6 max-w-3xl">
+        <header class="mb-10 text-center">
+            <div class="text-blue-600 font-semibold mb-2 text-sm uppercase tracking-wider">
+                
+            </div>
+            <h1 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">So sánh TCP và UDP trong Java: Lựa chọn giao thức phù hợp</h1>
+            <time class="text-slate-500">11 tháng 12, 2024</time>
+        </header>
+        
+        <div class="prose prose-lg prose-slate prose-a:text-blue-600 hover:prose-a:text-blue-700 mx-auto">
+            <h2 id="tổng-quan-về-tcp-và-udp">Tổng quan về TCP và UDP</h2>
+<p>TCP (Transmission Control Protocol) và UDP (User Datagram Protocol) là hai giao thức tầng transport chính trong mô hình TCP/IP. Mỗi giao thức có ưu nhược điểm riêng và phù hợp với các tình huống khác nhau.</p>
+<h2 id="so-sánh-tcp-vs-udp">So sánh TCP vs UDP</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Đặc điểm</th>
+          <th>TCP</th>
+          <th>UDP</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Kiểu kết nối</td>
+          <td>Connection-oriented</td>
+          <td>Connectionless</td>
+      </tr>
+      <tr>
+          <td>Độ tin cậy</td>
+          <td>Đảm bảo gửi nhận</td>
+          <td>Không đảm bảo</td>
+      </tr>
+      <tr>
+          <td>Thứ tự dữ liệu</td>
+          <td>Đảm bảo</td>
+          <td>Không đảm bảo</td>
+      </tr>
+      <tr>
+          <td>Tốc độ</td>
+          <td>Chậm hơn</td>
+          <td>Nhanh hơn</td>
+      </tr>
+      <tr>
+          <td>Header size</td>
+          <td>20 bytes</td>
+          <td>8 bytes</td>
+      </tr>
+      <tr>
+          <td>Kiểm tra lỗi</td>
+          <td>Có</td>
+          <td>Có (nhưng đơn giản)</td>
+      </tr>
+      <tr>
+          <td>Flow control</td>
+          <td>Có</td>
+          <td>Không</td>
+      </tr>
+      <tr>
+          <td>Ứng dụng</td>
+          <td>HTTP, FTP, Email</td>
+          <td>DNS, Streaming, Gaming</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="lập-trình-tcp-trong-java">Lập trình TCP trong Java</h2>
+<h3 id="tcp-server">TCP Server</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.io.*;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.net.*;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TCPServer</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> (ServerSocket serverSocket <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ServerSocket(5000)) {
+</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;TCP Server đang chạy...&#34;</span>);
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">while</span> (<span style="color:#66d9ef">true</span>) {
+</span></span><span style="display:flex;"><span>                Socket clientSocket <span style="color:#f92672">=</span> serverSocket.<span style="color:#a6e22e">accept</span>();
+</span></span><span style="display:flex;"><span>                System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Client kết nối: &#34;</span> <span style="color:#f92672">+</span> 
+</span></span><span style="display:flex;"><span>                    clientSocket.<span style="color:#a6e22e">getInetAddress</span>());
+</span></span><span style="display:flex;"><span>                
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// Xử lý client trong thread riêng</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">new</span> Thread(() <span style="color:#f92672">-&gt;</span> handleClient(clientSocket)).<span style="color:#a6e22e">start</span>();
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (IOException e) {
+</span></span><span style="display:flex;"><span>            e.<span style="color:#a6e22e">printStackTrace</span>();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">handleClient</span>(Socket socket) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> (
+</span></span><span style="display:flex;"><span>            BufferedReader in <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> BufferedReader(
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">new</span> InputStreamReader(socket.<span style="color:#a6e22e">getInputStream</span>())
+</span></span><span style="display:flex;"><span>            );
+</span></span><span style="display:flex;"><span>            PrintWriter out <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> PrintWriter(
+</span></span><span style="display:flex;"><span>                socket.<span style="color:#a6e22e">getOutputStream</span>(), <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>            )
+</span></span><span style="display:flex;"><span>        ) {
+</span></span><span style="display:flex;"><span>            String message <span style="color:#f92672">=</span> in.<span style="color:#a6e22e">readLine</span>();
+</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Nhận: &#34;</span> <span style="color:#f92672">+</span> message);
+</span></span><span style="display:flex;"><span>            out.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Echo: &#34;</span> <span style="color:#f92672">+</span> message);
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (IOException e) {
+</span></span><span style="display:flex;"><span>            e.<span style="color:#a6e22e">printStackTrace</span>();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="tcp-client">TCP Client</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.io.*;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.net.*;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TCPClient</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> (Socket socket <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Socket(<span style="color:#e6db74">&#34;localhost&#34;</span>, 5000)) {
+</span></span><span style="display:flex;"><span>            PrintWriter out <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> PrintWriter(
+</span></span><span style="display:flex;"><span>                socket.<span style="color:#a6e22e">getOutputStream</span>(), <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>            );
+</span></span><span style="display:flex;"><span>            BufferedReader in <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> BufferedReader(
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">new</span> InputStreamReader(socket.<span style="color:#a6e22e">getInputStream</span>())
+</span></span><span style="display:flex;"><span>            );
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            out.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Hello from TCP Client&#34;</span>);
+</span></span><span style="display:flex;"><span>            String response <span style="color:#f92672">=</span> in.<span style="color:#a6e22e">readLine</span>();
+</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Server phản hồi: &#34;</span> <span style="color:#f92672">+</span> response);
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (IOException e) {
+</span></span><span style="display:flex;"><span>            e.<span style="color:#a6e22e">printStackTrace</span>();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="lập-trình-udp-trong-java">Lập trình UDP trong Java</h2>
+<h3 id="udp-server">UDP Server</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.net.*;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UDPServer</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> (DatagramSocket socket <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> DatagramSocket(5000)) {
+</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;UDP Server đang chạy...&#34;</span>);
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> buffer <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">byte</span><span style="color:#f92672">[</span>1024<span style="color:#f92672">]</span>;
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">while</span> (<span style="color:#66d9ef">true</span>) {
+</span></span><span style="display:flex;"><span>                DatagramPacket packet <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> DatagramPacket(
+</span></span><span style="display:flex;"><span>                    buffer, buffer.<span style="color:#a6e22e">length</span>
+</span></span><span style="display:flex;"><span>                );
+</span></span><span style="display:flex;"><span>                socket.<span style="color:#a6e22e">receive</span>(packet);
+</span></span><span style="display:flex;"><span>                
+</span></span><span style="display:flex;"><span>                String message <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> String(
+</span></span><span style="display:flex;"><span>                    packet.<span style="color:#a6e22e">getData</span>(), 0, packet.<span style="color:#a6e22e">getLength</span>()
+</span></span><span style="display:flex;"><span>                );
+</span></span><span style="display:flex;"><span>                System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Nhận: &#34;</span> <span style="color:#f92672">+</span> message);
+</span></span><span style="display:flex;"><span>                
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// Gửi lại cho client</span>
+</span></span><span style="display:flex;"><span>                String response <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Echo: &#34;</span> <span style="color:#f92672">+</span> message;
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> responseData <span style="color:#f92672">=</span> response.<span style="color:#a6e22e">getBytes</span>();
+</span></span><span style="display:flex;"><span>                
+</span></span><span style="display:flex;"><span>                DatagramPacket responsePacket <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> DatagramPacket(
+</span></span><span style="display:flex;"><span>                    responseData,
+</span></span><span style="display:flex;"><span>                    responseData.<span style="color:#a6e22e">length</span>,
+</span></span><span style="display:flex;"><span>                    packet.<span style="color:#a6e22e">getAddress</span>(),
+</span></span><span style="display:flex;"><span>                    packet.<span style="color:#a6e22e">getPort</span>()
+</span></span><span style="display:flex;"><span>                );
+</span></span><span style="display:flex;"><span>                
+</span></span><span style="display:flex;"><span>                socket.<span style="color:#a6e22e">send</span>(responsePacket);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (Exception e) {
+</span></span><span style="display:flex;"><span>            e.<span style="color:#a6e22e">printStackTrace</span>();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="udp-client">UDP Client</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.net.*;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UDPClient</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> (DatagramSocket socket <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> DatagramSocket()) {
+</span></span><span style="display:flex;"><span>            InetAddress address <span style="color:#f92672">=</span> InetAddress.<span style="color:#a6e22e">getByName</span>(<span style="color:#e6db74">&#34;localhost&#34;</span>);
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            String message <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello from UDP Client&#34;</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> buffer <span style="color:#f92672">=</span> message.<span style="color:#a6e22e">getBytes</span>();
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            DatagramPacket packet <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> DatagramPacket(
+</span></span><span style="display:flex;"><span>                buffer, buffer.<span style="color:#a6e22e">length</span>, address, 5000
+</span></span><span style="display:flex;"><span>            );
+</span></span><span style="display:flex;"><span>            socket.<span style="color:#a6e22e">send</span>(packet);
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Nhận phản hồi</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> responseBuffer <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">byte</span><span style="color:#f92672">[</span>1024<span style="color:#f92672">]</span>;
+</span></span><span style="display:flex;"><span>            DatagramPacket responsePacket <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> DatagramPacket(
+</span></span><span style="display:flex;"><span>                responseBuffer, responseBuffer.<span style="color:#a6e22e">length</span>
+</span></span><span style="display:flex;"><span>            );
+</span></span><span style="display:flex;"><span>            socket.<span style="color:#a6e22e">receive</span>(responsePacket);
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            String response <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> String(
+</span></span><span style="display:flex;"><span>                responsePacket.<span style="color:#a6e22e">getData</span>(), 
+</span></span><span style="display:flex;"><span>                0, 
+</span></span><span style="display:flex;"><span>                responsePacket.<span style="color:#a6e22e">getLength</span>()
+</span></span><span style="display:flex;"><span>            );
+</span></span><span style="display:flex;"><span>            System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Server phản hồi: &#34;</span> <span style="color:#f92672">+</span> response);
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (Exception e) {
+</span></span><span style="display:flex;"><span>            e.<span style="color:#a6e22e">printStackTrace</span>();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="khi-nào-dùng-tcp-khi-nào-dùng-udp">Khi nào dùng TCP, khi nào dùng UDP?</h2>
+<h3 id="dùng-tcp-khi">Dùng TCP khi:</h3>
+<ul>
+<li>Cần đảm bảo dữ liệu được gửi đến đầy đủ và đúng thứ tự</li>
+<li>Ứng dụng quan trọng (banking, e-commerce)</li>
+<li>File transfer, email, web browsing</li>
+</ul>
+<h3 id="dùng-udp-khi">Dùng UDP khi:</h3>
+<ul>
+<li>Tốc độ quan trọng hơn độ tin cậy</li>
+<li>Có thể chấp nhận mất một số gói tin</li>
+<li>Streaming video/audio, online gaming, DNS queries</li>
+</ul>
+<h2 id="kết-luận">Kết luận</h2>
+<p>Việc lựa chọn giữa TCP và UDP phụ thuộc vào yêu cầu cụ thể của ứng dụng. TCP phù hợp cho các ứng dụng cần độ tin cậy cao, trong khi UDP tối ưu cho các ứng dụng real-time cần tốc độ.</p>
+
+        </div>
+
+        <div class="mt-12 text-center">
+            <a href="/#blog" class="inline-block px-6 py-2 border border-blue-600 text-blue-600 rounded-full hover:bg-blue-50 transition">← Quay lại trang chủ</a>
+        </div>
+    </article>
+</div>
+
+    </main>
+
+    <footer class="bg-slate-50 py-8 border-t border-slate-200 mt-20">
+        <div class="container mx-auto px-6 text-center text-slate-500 text-sm">
+            <p>&copy; 2024 Nguyễn Tuấn Cường. Sinh viên HUTECH.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

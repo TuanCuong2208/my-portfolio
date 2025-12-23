@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xây dựng RESTful API với Java Spring Boot và Networking</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+         
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #2563eb; }
+    </style>
+</head>
+<body class="bg-white text-slate-800 font-sans leading-relaxed">
+
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-md shadow-sm z-50 border-b border-slate-100">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-blue-600 tracking-tighter">NTC<span class="text-slate-400">.Dev</span></a>
+            <ul class="hidden md:flex space-x-8 font-medium">
+                
+                <li><a href="/TuanCuong2208/my-portfolio/#home" class="hover:text-blue-600 transition-colors">Trang Chủ</a></li>
+                
+                <li><a href="/TuanCuong2208/my-portfolio/#about" class="hover:text-blue-600 transition-colors">Về Tôi</a></li>
+                
+                <li><a href="/TuanCuong2208/my-portfolio/#certificates" class="hover:text-blue-600 transition-colors">Chứng Chỉ</a></li>
+                
+                <li><a href="/TuanCuong2208/my-portfolio/#blog" class="hover:text-blue-600 transition-colors">Blog</a></li>
+                
+            </ul>
+        </div>
+    </nav>
+
+    <main class="mt-16">
+        
+<div class="pt-24 pb-20 bg-white">
+    <article class="container mx-auto px-6 max-w-3xl">
+        <header class="mb-10 text-center">
+            <div class="text-blue-600 font-semibold mb-2 text-sm uppercase tracking-wider">
+                
+            </div>
+            <h1 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Xây dựng RESTful API với Java Spring Boot và Networking</h1>
+            <time class="text-slate-500">12 tháng 12, 2024</time>
+        </header>
+        
+        <div class="prose prose-lg prose-slate prose-a:text-blue-600 hover:prose-a:text-blue-700 mx-auto">
+            <h2 id="rest-api-là-gì">REST API là gì?</h2>
+<p>REST (Representational State Transfer) là một kiến trúc phần mềm cho việc xây dựng web services. RESTful API sử dụng HTTP methods (GET, POST, PUT, DELETE) để thực hiện các thao tác CRUD.</p>
+<h2 id="các-nguyên-tắc-của-rest">Các nguyên tắc của REST</h2>
+<ol>
+<li><strong>Stateless</strong>: Mỗi request độc lập, không lưu trạng thái</li>
+<li><strong>Client-Server</strong>: Tách biệt giao diện người dùng và lưu trữ dữ liệu</li>
+<li><strong>Cacheable</strong>: Response có thể được cache</li>
+<li><strong>Uniform Interface</strong>: Giao diện thống nhất</li>
+<li><strong>Layered System</strong>: Hệ thống phân tầng</li>
+</ol>
+<h2 id="xây-dựng-rest-api-với-spring-boot">Xây dựng REST API với Spring Boot</h2>
+<h3 id="bước-1-tạo-entity">Bước 1: Tạo Entity</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> javax.persistence.*;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Entity</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">User</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Id</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@GeneratedValue</span>(strategy <span style="color:#f92672">=</span> GenerationType.<span style="color:#a6e22e">IDENTITY</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> Long id;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> String name;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> String email;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Constructors, Getters, Setters</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">User</span>() {}
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">User</span>(String name, String email) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> name;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">email</span> <span style="color:#f92672">=</span> email;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Getters and Setters...</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="bước-2-tạo-repository">Bước 2: Tạo Repository</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.data.jpa.repository.JpaRepository;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">UserRepository</span> <span style="color:#66d9ef">extends</span> JpaRepository {
+</span></span><span style="display:flex;"><span>    User <span style="color:#a6e22e">findByEmail</span>(String email);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="bước-3-tạo-rest-controller">Bước 3: Tạo REST Controller</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.beans.factory.annotation.Autowired;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.http.ResponseEntity;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> org.springframework.web.bind.annotation.*;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.List;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@RestController</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@RequestMapping</span>(<span style="color:#e6db74">&#34;/api/users&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UserController</span> {
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Autowired</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> UserRepository userRepository;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// GET: Lấy tất cả users</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@GetMapping</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> List <span style="color:#a6e22e">getAllUsers</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> userRepository.<span style="color:#a6e22e">findAll</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// GET: Lấy user theo ID</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@GetMapping</span>(<span style="color:#e6db74">&#34;/{id}&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> ResponseEntity <span style="color:#a6e22e">getUserById</span>(<span style="color:#a6e22e">@PathVariable</span> Long id) {
+</span></span><span style="display:flex;"><span>        User user <span style="color:#f92672">=</span> userRepository.<span style="color:#a6e22e">findById</span>(id)
+</span></span><span style="display:flex;"><span>            .<span style="color:#a6e22e">orElseThrow</span>(() <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">new</span> ResourceNotFoundException(<span style="color:#e6db74">&#34;User not found&#34;</span>));
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ResponseEntity.<span style="color:#a6e22e">ok</span>(user);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// POST: Tạo user mới</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@PostMapping</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> User <span style="color:#a6e22e">createUser</span>(<span style="color:#a6e22e">@RequestBody</span> User user) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> userRepository.<span style="color:#a6e22e">save</span>(user);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// PUT: Cập nhật user</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@PutMapping</span>(<span style="color:#e6db74">&#34;/{id}&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> ResponseEntity <span style="color:#a6e22e">updateUser</span>(
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">@PathVariable</span> Long id, 
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">@RequestBody</span> User userDetails
+</span></span><span style="display:flex;"><span>    ) {
+</span></span><span style="display:flex;"><span>        User user <span style="color:#f92672">=</span> userRepository.<span style="color:#a6e22e">findById</span>(id)
+</span></span><span style="display:flex;"><span>            .<span style="color:#a6e22e">orElseThrow</span>(() <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">new</span> ResourceNotFoundException(<span style="color:#e6db74">&#34;User not found&#34;</span>));
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        user.<span style="color:#a6e22e">setName</span>(userDetails.<span style="color:#a6e22e">getName</span>());
+</span></span><span style="display:flex;"><span>        user.<span style="color:#a6e22e">setEmail</span>(userDetails.<span style="color:#a6e22e">getEmail</span>());
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        User updatedUser <span style="color:#f92672">=</span> userRepository.<span style="color:#a6e22e">save</span>(user);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ResponseEntity.<span style="color:#a6e22e">ok</span>(updatedUser);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// DELETE: Xóa user</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@DeleteMapping</span>(<span style="color:#e6db74">&#34;/{id}&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> ResponseEntity <span style="color:#a6e22e">deleteUser</span>(<span style="color:#a6e22e">@PathVariable</span> Long id) {
+</span></span><span style="display:flex;"><span>        User user <span style="color:#f92672">=</span> userRepository.<span style="color:#a6e22e">findById</span>(id)
+</span></span><span style="display:flex;"><span>            .<span style="color:#a6e22e">orElseThrow</span>(() <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">new</span> ResourceNotFoundException(<span style="color:#e6db74">&#34;User not found&#34;</span>));
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        userRepository.<span style="color:#a6e22e">delete</span>(user);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ResponseEntity.<span style="color:#a6e22e">ok</span>().<span style="color:#a6e22e">build</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="test-api-với-curl">Test API với cURL</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># GET tất cả users</span>
+</span></span><span style="display:flex;"><span>curl http://localhost:8080/api/users
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># POST tạo user mới</span>
+</span></span><span style="display:flex;"><span>curl -X POST http://localhost:8080/api/users <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -H <span style="color:#e6db74">&#34;Content-Type: application/json&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -d <span style="color:#e6db74">&#39;{&#34;name&#34;:&#34;John Doe&#34;,&#34;email&#34;:&#34;john@example.com&#34;}&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># GET user theo ID</span>
+</span></span><span style="display:flex;"><span>curl http://localhost:8080/api/users/1
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># PUT cập nhật user</span>
+</span></span><span style="display:flex;"><span>curl -X PUT http://localhost:8080/api/users/1 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -H <span style="color:#e6db74">&#34;Content-Type: application/json&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -d <span style="color:#e6db74">&#39;{&#34;name&#34;:&#34;Jane Doe&#34;,&#34;email&#34;:&#34;jane@example.com&#34;}&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># DELETE xóa user</span>
+</span></span><span style="display:flex;"><span>curl -X DELETE http://localhost:8080/api/users/1
+</span></span></code></pre></div><h2 id="kết-luận">Kết luận</h2>
+<p>Spring Boot giúp xây dựng REST API nhanh chóng và dễ dàng. Việc hiểu rõ các HTTP methods và RESTful principles là nền tảng quan trọng trong lập trình mạng hiện đại.</p>
+
+        </div>
+
+        <div class="mt-12 text-center">
+            <a href="/#blog" class="inline-block px-6 py-2 border border-blue-600 text-blue-600 rounded-full hover:bg-blue-50 transition">← Quay lại trang chủ</a>
+        </div>
+    </article>
+</div>
+
+    </main>
+
+    <footer class="bg-slate-50 py-8 border-t border-slate-200 mt-20">
+        <div class="container mx-auto px-6 text-center text-slate-500 text-sm">
+            <p>&copy; 2024 Nguyễn Tuấn Cường. Sinh viên HUTECH.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

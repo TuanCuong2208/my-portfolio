@@ -1,0 +1,196 @@
+{{ define "main" }}
+
+<style>
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-compact { animation: fadeInUp 0.7s ease-out forwards; opacity: 0; }
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-300 { animation-delay: 0.3s; }
+</style>
+
+<section id="home" class="pt-32 pb-24 px-6 text-center bg-gradient-to-b from-blue-50 via-white to-white relative overflow-hidden">
+    <div class="absolute top-0 left-1/4 w-72 h-72 bg-blue-100/50 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-pulse"></div>
+    <div class="absolute bottom-0 right-1/4 w-72 h-72 bg-blue-200/50 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-pulse" style="animation-delay: 1.5s;"></div>
+
+    <div class="relative z-10 animate-compact max-w-4xl mx-auto">
+        <h2 class="text-blue-600 font-bold mb-3 text-sm tracking-widest uppercase">Portfolio Cá Nhân</h2>
+        <h1 class="text-5xl md:text-8xl font-extrabold mb-6 tracking-tight">
+            <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-700 via-blue-500 to-blue-400">
+                Nguyễn Tuấn Cường
+            </span>
+        </h1>
+        <p class="text-xl text-slate-600 mb-10 font-light max-w-2xl mx-auto leading-relaxed">
+            Lập trình viên backend tương lai, chuyên sâu về <strong class="text-slate-900 font-semibold">Java Core</strong>, <strong class="text-slate-900 font-semibold">Spring Boot</strong> và các giải pháp <strong class="text-slate-900 font-semibold">Mạng Máy Tính</strong> bảo mật.
+        </p>
+        
+        <div class="flex justify-center gap-5">
+            <a href="#about" class="px-8 py-3 bg-blue-600 text-white rounded-full font-bold hover:bg-blue-700 transition-all shadow-lg shadow-blue-500/30 hover:-translate-y-1">
+                Về Tôi
+            </a>
+            <a href="#blog" class="px-8 py-3 bg-white text-blue-600 border border-blue-200 rounded-full font-bold hover:bg-blue-50 transition-all hover:-translate-y-1">
+                Đọc Blog
+            </a>
+        </div>
+    </div>
+</section>
+
+<section id="about" class="py-24 bg-white">
+    <div class="container mx-auto px-6 max-w-6xl animate-compact delay-100">
+        <div class="grid md:grid-cols-2 gap-16 items-start">
+            
+            <div class="relative group mx-auto md:mx-0 w-64 md:w-80">
+                <div class="absolute inset-0 bg-blue-600 rounded-3xl rotate-6 opacity-10 group-hover:rotate-12 transition duration-500"></div>
+                <div class="relative rounded-3xl overflow-hidden shadow-2xl border-[6px] border-white">
+                    <img src="images/avatar.jpg" alt="Avatar" class="w-full h-auto object-cover transform group-hover:scale-105 transition duration-500"
+                         onerror="this.src='https://ui-avatars.com/api/?name=TC&background=0D8ABC&color=fff&size=400';">
+                </div>
+            </div>
+
+            <div>
+                <h2 class="text-3xl font-bold text-slate-900 mb-6 flex items-center">
+                    <span class="w-12 h-1 bg-blue-600 mr-4 rounded-full"></span>
+                    Giới thiệu bản thân
+                </h2>
+                
+                <div class="prose prose-lg text-slate-600 mb-8 text-justify">
+                    <p class="mb-4">
+                        Xin chào, tôi là sinh viên năm 4 tại <strong class="text-blue-700">{{ .Site.Params.school }}</strong>. 
+                        Trong suốt quá trình học tập, tôi đã dành phần lớn thời gian để nghiên cứu sâu về ngôn ngữ <strong>Java</strong> và kiến trúc phần mềm. 
+                    </p>
+                    <p>
+                        Tôi không chỉ viết code để "chạy được", mà còn hướng tới việc tối ưu hóa hiệu năng và xây dựng mã nguồn sạch (Clean Code). 
+                        Mục tiêu ngắn hạn của tôi là trở thành một <strong>Backend Developer</strong> chuyên nghiệp, tham gia vào các dự án thực tế có quy mô lớn và độ phức tạp cao về xử lý dữ liệu mạng.
+                    </p>
+                </div>
+
+                <div class="bg-blue-50 rounded-2xl p-6 border border-blue-100 shadow-sm">
+                    <h3 class="text-lg font-bold text-slate-800 mb-4 border-b border-blue-200 pb-2">Thông tin liên hệ</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-center">
+                            <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-blue-600 shadow-sm mr-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+                            </div>
+                            <div>
+                                <span class="block text-xs text-slate-500 uppercase font-semibold">Chuyên môn</span>
+                                <span class="text-slate-900 font-medium">Lập trình mạng, Java, JavaScript</span>
+                            </div>
+                        </li>
+                        <li class="flex items-center">
+                            <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-blue-600 shadow-sm mr-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                            </div>
+                            <div>
+                                <span class="block text-xs text-slate-500 uppercase font-semibold">Email</span>
+                                <a href="mailto:{{ .Site.Params.email }}" class="text-blue-700 hover:underline font-medium">{{ .Site.Params.email }}</a>
+                            </div>
+                        </li>
+                        <li class="flex items-center">
+                            <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-blue-600 shadow-sm mr-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                            </div>
+                            <div>
+                                <span class="block text-xs text-slate-500 uppercase font-semibold">Điện thoại</span>
+                                <span class="text-slate-900 font-medium">{{ .Site.Params.phone }}</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="certificates" class="py-24 bg-slate-50">
+    <div class="container mx-auto px-6 max-w-6xl animate-compact delay-200">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold text-slate-900">Chứng Chỉ & Thành Tựu</h2>
+            <div class="w-24 h-1 bg-blue-600 mx-auto mt-4 rounded-full"></div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <div class="group bg-white p-3 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 cursor-pointer">
+                <div class="aspect-[4/3] overflow-hidden rounded-xl bg-slate-200 relative">
+                    <img src="images/CC1.jpg" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700"
+                         onerror="this.parentNode.innerHTML='<div class=\'flex items-center justify-center h-full text-slate-400\'>Chưa có ảnh</div>';">
+                </div>
+                <div class="mt-4 text-center font-medium text-slate-700 group-hover:text-blue-600">
+                    Cisco Networking Basics
+                </div>
+            </div>
+
+            <div class="group bg-white p-3 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 cursor-pointer">
+                <div class="aspect-[4/3] overflow-hidden rounded-xl bg-slate-200 relative">
+                    <img src="images/CC2.jpg" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700"
+                         onerror="this.parentNode.innerHTML='<div class=\'flex items-center justify-center h-full text-slate-400\'>Chưa có ảnh</div>';">
+                </div>
+                <div class="mt-4 text-center font-medium text-slate-700 group-hover:text-blue-600">
+                    JavaScript Essentials 1
+                </div>
+            </div>
+
+            <div class="group bg-white p-3 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 cursor-pointer">
+                <div class="aspect-[4/3] overflow-hidden rounded-xl bg-slate-200 relative">
+                    <img src="images/CC3.jpg" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700"
+                         onerror="this.parentNode.innerHTML='<div class=\'flex items-center justify-center h-full text-slate-400\'>Chưa có ảnh</div>';">
+                </div>
+                <div class="mt-4 text-center font-medium text-slate-700 group-hover:text-blue-600">
+                    JavaScript Essentials 2
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="blog" class="py-24 bg-white">
+    <div class="container mx-auto px-6 max-w-6xl animate-compact delay-300">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-12 border-b border-slate-100 pb-4">
+            <div>
+                <h2 class="text-3xl font-bold text-slate-900">Góc Chia Sẻ</h2>
+                <p class="text-slate-500 mt-2">Những bài viết mới nhất về công nghệ</p>
+            </div>
+            <a href="#" class="hidden md:inline-block text-blue-600 font-bold hover:bg-blue-50 px-4 py-2 rounded-lg transition">Xem tất cả →</a>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {{ range first 3 (where .Site.RegularPages "Section" "posts") }}
+            <article class="group bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:border-blue-100 transition-all duration-300 hover:-translate-y-2 flex flex-col h-full overflow-hidden cursor-pointer">
+                <div class="p-8 flex-grow">
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="px-3 py-1 bg-blue-50 text-blue-600 text-xs font-bold rounded-full uppercase tracking-wider">
+                            {{ if .Params.tags }}{{ index .Params.tags 0 }}{{ else }}Blog{{ end }}
+                        </span>
+                        <span class="text-slate-400 text-xs">{{ .Date.Format "02/01/2006" }}</span>
+                    </div>
+                    
+                    <h3 class="text-xl font-bold text-slate-800 mb-3 leading-snug group-hover:text-blue-600 transition-colors">
+                        <a href="{{ .Permalink }}">{{ .Title }}</a>
+                    </h3>
+                    
+                    <p class="text-slate-500 text-sm line-clamp-3 leading-relaxed">
+                        {{ .Summary | plainify | truncate 140 }}
+                    </p>
+                </div>
+
+                <div class="px-8 py-4 bg-slate-50 border-t border-slate-100 flex justify-between items-center">
+                    <div class="flex items-center gap-2">
+                        <div class="w-6 h-6 rounded-full bg-blue-200 flex items-center justify-center text-[10px] text-blue-700 font-bold">TC</div>
+                        <span class="text-xs text-slate-500 font-medium">Tuấn Cường</span>
+                    </div>
+                    <span class="text-blue-600 text-sm font-bold group-hover:underline">Đọc tiếp →</span>
+                </div>
+            </article>
+            {{ end }}
+        </div>
+        
+        <div class="mt-8 text-center md:hidden">
+             <a href="#" class="inline-block bg-slate-100 text-slate-700 font-bold px-6 py-3 rounded-full hover:bg-slate-200 transition">Xem tất cả bài viết</a>
+        </div>
+    </div>
+</section>
+
+{{ end }}

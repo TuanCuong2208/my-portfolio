@@ -1,0 +1,21 @@
+{{ define "main" }}
+<div class="pt-24 pb-20 bg-white">
+    <article class="container mx-auto px-6 max-w-3xl">
+        <header class="mb-10 text-center">
+            <div class="text-blue-600 font-semibold mb-2 text-sm uppercase tracking-wider">
+                {{ if .Params.tags }}{{ delimit .Params.tags ", " }}{{ end }}
+            </div>
+            <h1 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">{{ .Title }}</h1>
+            <time class="text-slate-500">{{ .Date.Format "02 tháng 01, 2006" }}</time>
+        </header>
+        
+        <div class="prose prose-lg prose-slate prose-a:text-blue-600 hover:prose-a:text-blue-700 mx-auto">
+            {{ .Content }}
+        </div>
+
+        <div class="mt-12 text-center">
+            <a href="/#blog" class="inline-block px-6 py-2 border border-blue-600 text-blue-600 rounded-full hover:bg-blue-50 transition">← Quay lại trang chủ</a>
+        </div>
+    </article>
+</div>
+{{ end }}
